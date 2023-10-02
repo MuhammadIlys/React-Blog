@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Navbar(props) {
     return (
@@ -14,12 +14,8 @@ export default function Navbar(props) {
                     <ul className="navbar-nav ms-auto py-4 py-lg-0">
                         <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/">Home</Link></li>
                         <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/about">About</Link></li>
-                        {props.auth === 0 ? <Redirect />
-                            :
-                            <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/sample">Sample Post</Link></li>
-                        }
+                        <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/sample">Sample Post</Link></li>
                         <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" to="/contact">Contact</Link></li>
-
                         <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" onClick={props.login}> {props.state ? "Login" : "Logout"}</Link></li>
                         {/* <li className="nav-item"><Link className="nav-link px-lg-3 py-3 py-lg-4" onClick={props.login}>Logout</Link></li> */}
                     </ul>

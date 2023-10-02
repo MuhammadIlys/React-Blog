@@ -7,27 +7,27 @@ import About from './Components/About';
 import SamplePost from './Components/SamplePost';
 import Contact from './Components/Contact';
 import Nopage from './Components/Nopage';
-import { Routes } from 'react-router-dom';
+import { Navigate, Routes } from 'react-router-dom';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
 
 function App() {
 
-  const [auth,setAuth] = useState(0);
+  const [auth, setAuth] = useState(0);
   const loginhandler = () => {
-   if(auth==1){
-    alert('auth one' + auth);
-    setAuth(0);
-   }else{
-    alert('auth zero' + auth);
-    setAuth(1);
-   }
+    if (auth == 1) {
+      alert('auth one' + auth);
+      setAuth(0);
+    } else {
+      alert('auth zero' + auth);
+      setAuth(1);
+    }
   };
   // useEffect(() => {
   //   alert('Effect auth' + auth); // This will alert the updated (new) value of auth
@@ -43,7 +43,10 @@ function App() {
             <Route path="/" element={<Home />} ></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/contact" element={<Contact />}></Route>
-            <Route path="/sample" element={<SamplePost />}></Route>
+            {
+            auth ? ( <Route path="/" element={<Navigate />} /> ) : ( <Route path="/sample" element={<SamplePost />} /> )
+            }
+
             <Route path="*" element={<Nopage />}></Route>
           </Routes>
         </Router>
